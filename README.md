@@ -1,12 +1,58 @@
-# React + Vite
+# Cashier Management System - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based frontend for a cashier management system with separate admin and cashier dashboards.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- User authentication (Login/Register)
+- Role-based access control (Admin/Cashier)
+- Product management (Admin only)
+- Dashboard for both admin and cashier roles
 
-## Expanding the ESLint configuration
+## Prerequisites
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Node.js (v14 or higher)
+- npm or yarn
+- Backend API (Laravel) running on port 8000
+
+## Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+## Development
+
+To start the development server:
+
+```bash
+npm run dev
+```
+
+The application will open automatically in your browser at `http://localhost:3000/login`.
+
+## Project Structure
+
+```
+src/
+├── auth/          # Authentication components and services
+├── admin/         # Admin dashboard components
+├── cashier/       # Cashier dashboard components
+├── products/      # Product management components
+├── App.jsx        # Main application component with routing
+└── main.jsx       # Application entry point
+```
+
+## Available Routes
+
+- `/login` - User login
+- `/register` - User registration
+- `/admin` - Admin dashboard
+- `/admin/products` - Product management (Admin only)
+- `/cashier` - Cashier dashboard
+
+## Authentication
+
+The application uses token-based authentication with Laravel Sanctum. User credentials are stored in localStorage.
