@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import ProductAPI from './ProductAPI';
+import ProductAPI from '../products/ProductAPI';
 import './ProductForm.css';
 
 const ProductForm = ({ product, onSave, onCancel }) => {

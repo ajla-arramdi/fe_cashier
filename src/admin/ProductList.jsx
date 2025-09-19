@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import ProductAPI from './ProductAPI';
-import ProductForm from './ProductForm';
-import EnhancedProductForm from '../admin/EnhancedProductForm';
+import ProductAPI from '../products/ProductAPI';
+import ProductForm from '../products/ProductForm';
 import './ProductList.css';
 
 const ProductList = () => {
@@ -101,7 +100,7 @@ const ProductList = () => {
       </div>
 
       {showForm ? (
-        <EnhancedProductForm 
+        <ProductForm 
           product={editingProduct} 
           onSave={handleSave} 
           onCancel={handleCancel} 

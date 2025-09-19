@@ -93,6 +93,23 @@ class ProductAPI {
       throw error;
     }
   }
+
+  // Get product statistics (mock implementation)
+  static async getProductStats() {
+    try {
+      // In a real implementation, this would fetch from your API
+      // For now, we'll return mock data
+      return {
+        totalProducts: 42,
+        totalSales: 128,
+        totalRevenue: 24560000,
+        lowStockItems: 5
+      };
+    } catch (error) {
+      console.error('Error fetching product stats:', error);
+      throw error;
+    }
+  }
 }
 
 export default ProductAPI;

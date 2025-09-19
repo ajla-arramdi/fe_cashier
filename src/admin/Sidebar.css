@@ -1,0 +1,136 @@
+/* Sidebar Styles */
+.sidebar {
+  background: linear-gradient(180deg, #1a2980 0%, #26d0ce 100%);
+  color: white;
+  height: 100vh;
+  position: fixed;
+  transition: all 0.3s ease;
+  z-index: 100;
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar.open {
+  width: 250px;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.toggle-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.sidebar-nav {
+  padding: 1rem 0;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.nav-item.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-left: 4px solid white;
+}
+
+.nav-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.nav-text {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Icons - In a real app, you would use actual icons */
+.dashboard-icon::before {
+  content: "📊";
+}
+
+.product-icon::before {
+  content: "📦";
+}
+
+.user-icon::before {
+  content: "👥";
+}
+
+.report-icon::before {
+  content: "📈";
+}
+
+.settings-icon::before {
+  content: "⚙️";
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar.open {
+    width: 200px;
+  }
+  
+  .sidebar.collapsed {
+    width: 60px;
+  }
+  
+  .nav-text {
+    font-size: 0.9rem;
+  }
+}

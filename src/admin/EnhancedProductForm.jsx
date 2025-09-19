@@ -1,27 +1,16 @@
-import { useState, useEffect } from 'react';
-import ProductAPI from './ProductAPI';
-import './ProductForm.css';
+import { useState } from 'react';
+import ProductAPI from '../products/ProductAPI';
+import './EnhancedProductForm.css';
 
-const ProductForm = ({ product, onSave, onCancel }) => {
+const EnhancedProductForm = ({ product, onSave, onCancel }) => {
   const [formData, setFormData] = useState({
-    nama: '',
-    kategori: '',
-    stok: '',
-    harga: ''
+    nama: product?.nama || '',
+    kategori: product?.kategori || '',
+    stok: product?.stok || '',
+    harga: product?.harga || ''
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  useEffect(() => {
-    if (product) {
-      setFormData({
-        nama: product.nama || '',
-        kategori: product.kategori || '',
-        stok: product.stok || '',
-        harga: product.harga || ''
-      });
-    }
-  }, [product]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -84,7 +73,6 @@ const ProductForm = ({ product, onSave, onCancel }) => {
       }
       
       onSave();
-      setFormData({ nama: '', kategori: '', stok: '', harga: '' });
     } catch (error) {
       console.error('Error saving product:', error);
       alert('Terjadi kesalahan saat menyimpan produk. Silakan coba lagi.');
@@ -94,20 +82,20 @@ const ProductForm = ({ product, onSave, onCancel }) => {
   };
 
   return (
-    <div className="product-form-overlay">
-      <div className="product-form-container">
+    <div className="enhanced-product-form-overlay">
+      <div className="enhanced-product-form-container">
         <div className="form-header">
           <h2>{product ? 'Edit Produk' : 'Tambah Produk Baru'}</h2>
           <button 
-            className="close-button" 
-            onClick={onCancel}
-            aria-label="Close form"
+            onClick={onCancel} 
+            className="close-btn"
+            disabled={isSubmitting}
           >
-            &times;
+            ×
           </button>
         </div>
         
-        <form onSubmit={handleSubmit} className="product-form">
+        <form onSubmit={handleSubmit} className="enhanced-product-form">
           <div className="form-group">
             <label htmlFor="nama">Nama Produk *</label>
             <input
@@ -116,7 +104,7 @@ const ProductForm = ({ product, onSave, onCancel }) => {
               name="nama"
               value={formData.nama}
               onChange={handleChange}
-              className={`form-input ${errors.nama ? 'error' : ''}`}
+              className={errors.nama ? 'error' : ''}
               placeholder="Masukkan nama produk"
             />
             {errors.nama && <span className="error-message">{errors.nama}</span>}
@@ -130,7 +118,6 @@ const ProductForm = ({ product, onSave, onCancel }) => {
               name="kategori"
               value={formData.kategori}
               onChange={handleChange}
-              className="form-input"
               placeholder="Masukkan kategori produk (opsional)"
             />
           </div>
@@ -144,7 +131,7 @@ const ProductForm = ({ product, onSave, onCancel }) => {
                 name="stok"
                 value={formData.stok}
                 onChange={handleChange}
-                className={`form-input ${errors.stok ? 'error' : ''}`}
+                className={errors.stok ? 'error' : ''}
                 min="0"
                 placeholder="0"
               />
@@ -159,7 +146,7 @@ const ProductForm = ({ product, onSave, onCancel }) => {
                 name="harga"
                 value={formData.harga}
                 onChange={handleChange}
-                className={`form-input ${errors.harga ? 'error' : ''}`}
+                className={errors.harga ? 'error' : ''}
                 min="0"
                 step="100"
                 placeholder="0"
@@ -191,4 +178,4 @@ const ProductForm = ({ product, onSave, onCancel }) => {
   );
 };
 
-export default ProductForm;
+export default EnhancedProductForm;
